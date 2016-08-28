@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1024">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="f/i//favicon.ico">
+    <title>Mik76</title>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="f/js/jquery-1.11.3.min.js"></script>
+    <script src="f/js/jquery.flexslider-min.js"></script>
+    <script src="f/js/bootstrap-multiselect.js"></script>
+    <script src="f/js/bootstrap.min.js"></script>
+    <script src="f/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <link rel="stylesheet" href="f/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">
+    <link rel="stylesheet" href="f/css/flexslider.css">
+    <link rel="stylesheet" href="f/css/bootstrap-multiselect.css">
+    <link rel="stylesheet" href="f/css/main.css">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,500,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+    rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false">
+		</script>
+    <!--[if IE]>
+    <link rel="stylesheet" href="f/css/ie.css">
+    <![endif]-->
+    <script src="f/js/common.js"></script>
+    <script>
+    	function initialize() {
+        var Pos1 = new google.maps.LatLng(57.651904, 39.944559);
+        var map = new google.maps.Map(document.getElementById("map_canvas"), {
+          zoom: 18,
+          center: Pos1,
+          mapTypeControl: true,
+          mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+          navigationControl: true,
+          navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        var Mark = new google.maps.MarkerImage("f/i/marker.png",
+          new google.maps.Size(50,59),
+          new google.maps.Point(0,0),
+          new google.maps.Point(0,59)
+        );
+      }
+      $(document).ready(function() {
+         $("#month-select").multiselect();
+         $("#year-select").multiselect();
+      });
+      (function() {
+        $(window).load(function() {
+          $("#quality-slider").flexslider({
+            animation: "slide",
+            slideshow: false,
+            controlNav: false,
+            sync: "#quality-slider-control",
+            customDirectionNav: $("#quality-slider .flexslider-navigation a")
+          });
+          $("#quality-slider-control").flexslider({
+            animation: "slide",
+            controlNav: false,
+            slideshow: false,
+            itemWidth: 50,
+            asNavFor: "#quality-slider"
+          });
+          $("#construction-slider").flexslider({
+            animation: "slide",
+            controlNav: false,
+            customDirectionNav: $("#construction-slider .flexslider-navigation a")
+          });
+          $("#construction-slider-caption").flexslider({
+            animation: "fade",
+            sync: "#construction-slider",
+            customDirectionNav: $("#construction-slider .flexslider-navigation a"),
+            controlNav: false
+          });
+          $("#planning-slider").flexslider({
+            animation: "slide",
+            slideshow: false,
+            controlNav: false,
+            customDirectionNav: $("#planning-slider .flexslider-navigation a"),
+            start: function(slider) {
+              $(".planning-nav__item").click(function(){
+                slider.flexAnimate($(this).index(".planning-nav a"));
+                return false;
+              });
+            },
+            after: function(slider){
+              $(".planning-nav__item").removeClass("planning-nav__item_active");
+              $(".planning-nav__item").eq(slider.currentSlide).addClass("planning-nav__item_active")
+            }
+          });
+        });
+      }());
+    </script>
+  </head>
+<body onload='initialize()'>
+	<header class="header">
+		<div class="container header__holder">
+			<a href="/" class="logo"><img src="f/i/logo.png" alt=""></a>
+			<div class="header__phone">
+				<div class="header__phone-holder">
+					<p>(4852) <b>65-95-92</b></p>
+					<span>Отдел продаж</span>
+				</div>
+			</div>
+			<div class="main-menu">
+  			<ul>
+					<li><a href="#">О компании</a></li>
+					<li><a href="#">Реализованные проекты</a></li>
+					<li><a href="#">Партнеры</a></li>
+					<li><a href="#">Документация</a></li>
+					<li><a href="#">Контакты</a></li>
+				</ul>
+  		</div>
+		</div>
+	</header>
+	<div class="content clearfix">
+    <div class="container">
+  		<section class="preface">
+        <div class="row">
+          <div class="col-md-9 col-sm-9">
+            <div class="preface__img">
+              <img src="f/i/preface.jpg" alt="">
+            </div>
+          </div>
+          <div class="preface__content col-md-5 col-sm-5">
+            <div class="preface__content-holder">
+              <div class="preface__description">
+                <p class="preface__title">Жилой Дом комфорт-класса</p>
+                <p class="preface__name">«АВРОРА»</p>
+                <p class="preface__caption">Адрес</p>
+                <p class="preface__text">г.Ярославль, ул.9-я Красноборская д.5</p>
+                <p class="preface__caption">Срок сдачи</p>
+                <p class="preface__text">IV квартал 2017</p>
+              </div>
+              <a href="#" class="btn btn-white">Выбрать квартиру<i class="arrow arrow_white"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="preface-detail holder">
+        <div class="row"> 
+          <div class="col-md-9 col-sm-9">
+            <div class="preface-detail__description">
+              <p class="preface-detail__title">Описание</p>
+              <p class="preface-detail__text">Жилой дом комфорт-класса &laquo;Аврора&raquo; расположен в&nbsp;самом экологически чистом районе города&nbsp;&mdash; Заволжском, внутри существующего жилого массива с&nbsp;развитой инфраструктурой и&nbsp;существующими благоустроенными проездами и&nbsp;пешеходными зонами, озеленением. Жилой комплекс расположен в&nbsp;50&nbsp;м от&nbsp;главной магистрали района&nbsp;&mdash; проспекта Машиностроителей, имеет отдельный проезд и&nbsp;отгорожен от&nbsp;шума существующей жилой застройкой.</p>
+              <a href="#" class="btn"><i class="icon-file"></i>Скачать презентацию</a>
+            </div>
+          </div>
+          <div class="col-md-5 col-sm-5">
+            <div class="preface-detail__info">
+              <p class="preface-detail__title">Характеристики</p>
+              <p class="line"><span>Этажность</span><span>12</span></p>
+              <p class="line"><span>Срок сдачи</span><span>IV квартарл 2017</span></p>
+              <p class="line"><span>Материал стен</span><span>Кирпич</span></p>
+              <p class="line"><span>1-комн. кв.</span><span>от 1 500 000 <i class="rub">&#8399;</i></span></p>
+              <p class="line"><span>2-комн. кв.</span><span>от 2 100 000 <i class="rub">&#8399;</i></span></p>
+              <p class="line"><span>3-комн. кв.</span><span>от 2 800 000 <i class="rub">&#8399;</i></span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="visual">
+        <div class="visual__text">
+          <img src="f/i/3d.png" alt="">
+          <p>Посмотрите<br>3D-визуализацию<br>нашего дома</p>
+        </div>
+        <div class="visual__img-wrap">
+          <div class="visual__img visual__img_half">
+            <a href="#"><img src="f/i/visual/1.jpg" alt=""></a><a href="#"><img src="f/i/visual/2.jpg" alt=""></a>
+          </div><div class="visual__img">
+            <a href="#"><img src="f/i/visual/3.jpg" alt=""></a>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="holder">
+          <h2 class="lined">Качество и надежность</h2>
+          <p class="section__text">В&nbsp;процессе проектирования дома мы&nbsp;учли все возможные ошибки и&nbsp;недочеты, которые обычно допускают застройщики при строительстве жилых домов.</p>
+          <div class="quality-slider-control" id="quality-slider-control">
+            <ul class="slides">
+              <li class="quality-slider-control__item quality-slider-control__item_1">
+              </li><li class="quality-slider-control__item quality-slider-control__item_2"></li><li class="quality-slider-control__item quality-slider-control__item_3">
+              </li><li class="quality-slider-control__item quality-slider-control__item_4"></li><li class="quality-slider-control__item quality-slider-control__item_5">
+              </li><li class="quality-slider-control__item quality-slider-control__item_6"></li>
+            </ul>
+          </div>
+          <div class="quality-slider slider" id="quality-slider">
+            <ul class="slides">
+              <li>
+                <div class="quality-slider__row">
+                  <div class="quality-slider__cell quality-slider__img">
+                    <img src="f/i/quality/1.png" alt="">
+                  </div>
+                  <div class="quality-slider__cell quality-slider__text">
+                    <p class="quality-slider__title">Дом из кирпича</p>
+                    <p class="quality-slider__text">Дом построен из&nbsp;&laquo;тёплого&raquo; керамического кирпича &laquo;Норский&raquo;, внешняя отделка&nbsp;&mdash; лицевой утолщенный керамический кирпич &laquo;Керма&raquo; и&nbsp;&laquo;Норский&raquo; цвета слоновой кости, шоколад и&nbsp;терракот.</p>
+                    <a href="#" class="btn">Подробнее<i class="arrow"></i></a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="quality-slider__row">
+                  <div class="quality-slider__cell quality-slider__img">
+                    <img src="f/i/quality/1.png" alt="">
+                  </div>
+                  <div class="quality-slider__cell quality-slider__text">
+                    <p class="quality-slider__title">Дом из кирпича</p>
+                    <p class="quality-slider__text">Дом построен из&nbsp;&laquo;тёплого&raquo; керамического кирпича &laquo;Норский&raquo;, внешняя отделка&nbsp;&mdash; лицевой утолщенный керамический кирпич &laquo;Керма&raquo; и&nbsp;&laquo;Норский&raquo; цвета слоновой кости, шоколад и&nbsp;терракот.</p>
+                    <a href="#" class="btn">Подробнее<i class="arrow"></i></a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="quality-slider__row">
+                  <div class="quality-slider__cell quality-slider__img">
+                    <img src="f/i/quality/1.png" alt="">
+                  </div>
+                  <div class="quality-slider__cell quality-slider__text">
+                    <p class="quality-slider__title">Дом из кирпича</p>
+                    <p class="quality-slider__text">Дом построен из&nbsp;&laquo;тёплого&raquo; керамического кирпича &laquo;Норский&raquo;, внешняя отделка&nbsp;&mdash; лицевой утолщенный керамический кирпич &laquo;Керма&raquo; и&nbsp;&laquo;Норский&raquo; цвета слоновой кости, шоколад и&nbsp;терракот.</p>
+                    <a href="#" class="btn">Подробнее<i class="arrow"></i></a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="quality-slider__row">
+                  <div class="quality-slider__cell quality-slider__img">
+                    <img src="f/i/quality/1.png" alt="">
+                  </div>
+                  <div class="quality-slider__cell quality-slider__text">
+                    <p class="quality-slider__title">Дом из кирпича</p>
+                    <p class="quality-slider__text">Дом построен из&nbsp;&laquo;тёплого&raquo; керамического кирпича &laquo;Норский&raquo;, внешняя отделка&nbsp;&mdash; лицевой утолщенный керамический кирпич &laquo;Керма&raquo; и&nbsp;&laquo;Норский&raquo; цвета слоновой кости, шоколад и&nbsp;терракот.</p>
+                    <a href="#" class="btn">Подробнее<i class="arrow"></i></a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="quality-slider__row">
+                  <div class="quality-slider__cell quality-slider__img">
+                    <img src="f/i/quality/1.png" alt="">
+                  </div>
+                  <div class="quality-slider__cell quality-slider__text">
+                    <p class="quality-slider__title">Дом из кирпича</p>
+                    <p class="quality-slider__text">Дом построен из&nbsp;&laquo;тёплого&raquo; керамического кирпича &laquo;Норский&raquo;, внешняя отделка&nbsp;&mdash; лицевой утолщенный керамический кирпич &laquo;Керма&raquo; и&nbsp;&laquo;Норский&raquo; цвета слоновой кости, шоколад и&nbsp;терракот.</p>
+                    <a href="#" class="btn">Подробнее<i class="arrow"></i></a>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="quality-slider__row">
+                  <div class="quality-slider__cell quality-slider__img">
+                    <img src="f/i/quality/1.png" alt="">
+                  </div>
+                  <div class="quality-slider__cell quality-slider__text">
+                    <p class="quality-slider__title">Дом из кирпича</p>
+                    <p class="quality-slider__text">Дом построен из&nbsp;&laquo;тёплого&raquo; керамического кирпича &laquo;Норский&raquo;, внешняя отделка&nbsp;&mdash; лицевой утолщенный керамический кирпич &laquo;Керма&raquo; и&nbsp;&laquo;Норский&raquo; цвета слоновой кости, шоколад и&nbsp;терракот.</p>
+                    <a href="#" class="btn">Подробнее<i class="arrow"></i></a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <div class="flexslider-navigation">
+              <a href="#" class="flex-prev">&nbsp;</a>
+              <a href="#" class="flex-next">&nbsp;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <h2 class="lined">Развитая инфраструктура</h2>
+        <p class="section__text">Дом находится в&nbsp;самом экологически чистом районе города&nbsp;&mdash; Заволжском. В&nbsp;пешей доступности есть все, что нужно для комфортной жизни&nbsp;&mdash; магазины, торговые центры, аптеки, школы и&nbsp;детские сады.</p>
+        <div class="map">
+          <div class="map-control">
+            <div class="map-control__wrap">
+              <div class="map-control__holder">
+                <a href="#" class="map-control__btn"><i class="icon-cube"></i>Детские сады</a>
+                <a href="#" class="map-control__btn active"><i class="icon-schools"></i>Школы</a>
+                <a href="#" class="map-control__btn"><i class="icon-drugstore"></i>Аптеки</a>  
+                <a href="#" class="map-control__btn"><i class="icon-shoping"></i>Торговые центры</a>
+                <a href="#" class="map-control__btn"><i class="icon-market"></i>Магазины и рынки</a>
+                <a href="#" class="map-control__btn"><i class="icon-hospital"></i>Поликлиники</a> 
+              </div>
+            </div>
+          </div>
+          <div class="map__holder" id="map_canvas"></div>
+        </div>
+      </section>
+      <section class="section planning">
+        <div class="container holder">
+          <h2 class="lined">Планировки</h2>
+          <p class="section__text">В&nbsp;нашем доме каждый может найти планировку для себя: будь&nbsp;то однокомнатная квартира или трехкомнатная квартира для большой семьи.</p>
+          <div class="planning-nav">
+            <div class="planning-nav__part">
+              <span class="planning-nav__caption">Цоколь</span>
+              <a href="#" class="planning-nav__item planning-nav__item_active">0</a>
+            </div><div class="planning-nav__part">
+              <span class="planning-nav__caption">Типовые этажи</span>
+              <a href="#" class="planning-nav__item">2</a>
+              <a href="#" class="planning-nav__item">3</a>
+              <a href="#" class="planning-nav__item">4</a>
+              <a href="#" class="planning-nav__item">5</a>
+              <a href="#" class="planning-nav__item">6</a>
+              <a href="#" class="planning-nav__item">7</a>
+              <a href="#" class="planning-nav__item">8</a>
+              <a href="#" class="planning-nav__item">9</a>
+              <a href="#" class="planning-nav__item">10</a>
+            </div><div class="planning-nav__part">
+              <span class="planning-nav__caption">Улучшенные этажи</span>
+              <a href="#" class="planning-nav__item">11</a>
+              <a href="#" class="planning-nav__item">12</a>
+            </div>
+          </div>
+          <div class="planning-slider slider" id="planning-slider">
+            <img class="planning-slider__sides" src="f/i/sides.png" alt="">
+            <ul class="slides">
+              <li>
+                <img src="f/i/planning/1.png" alt="">
+                <span class="planning-slider__room" style="top: 82px; left: 177px">
+                  <b>2</b>
+                  65,18
+                </span>
+                <span class="planning-slider__room" style="top: 82px; right: 177px">
+                  <b>3</b>
+                  89,17
+                </span>
+                <span class="planning-slider__room" style="bottom: 150px; left: 56px">
+                  <b>1</b>
+                  44,10
+                </span>
+                <span class="planning-slider__room" style="bottom: 95px; left: 254px">
+                  <b>2</b>
+                  56,59
+                </span>
+                <span class="planning-slider__room" style="bottom: 95px; right: 392px">
+                  <b>1</b>
+                  39,86
+                </span>
+                <span class="planning-slider__room" style="bottom: 120px; right: 178px">
+                  <b>2</b>
+                  74,79
+                </span>
+              </li>
+              <li>
+                <img src="f/i/planning/1.png" alt="">
+                <span class="planning-slider__room" style="top: 82px; left: 177px">
+                  <b>2</b>
+                  65,18
+                </span>
+                <span class="planning-slider__room" style="top: 82px; right: 177px">
+                  <b>3</b>
+                  89,17
+                </span>
+                <span class="planning-slider__room" style="bottom: 150px; left: 56px">
+                  <b>1</b>
+                  44,10
+                </span>
+                <span class="planning-slider__room" style="bottom: 95px; left: 254px">
+                  <b>2</b>
+                  56,59
+                </span>
+                <span class="planning-slider__room" style="bottom: 95px; right: 392px">
+                  <b>1</b>
+                  39,86
+                </span>
+                <span class="planning-slider__room" style="bottom: 120px; right: 178px">
+                  <b>2</b>
+                  74,79
+                </span>
+              </li>
+              <li>
+                <img src="f/i/planning/1.png" alt="">
+                <span class="planning-slider__room" style="top: 82px; left: 177px">
+                  <b>2</b>
+                  65,18
+                </span>
+                <span class="planning-slider__room" style="top: 82px; right: 177px">
+                  <b>3</b>
+                  89,17
+                </span>
+                <span class="planning-slider__room" style="bottom: 150px; left: 56px">
+                  <b>1</b>
+                  44,10
+                </span>
+                <span class="planning-slider__room" style="bottom: 95px; left: 254px">
+                  <b>2</b>
+                  56,59
+                </span>
+                <span class="planning-slider__room" style="bottom: 95px; right: 392px">
+                  <b>1</b>
+                  39,86
+                </span>
+                <span class="planning-slider__room" style="bottom: 120px; right: 178px">
+                  <b>2</b>
+                  74,79
+                </span>
+              </li>
+              <li>
+                <img src="f/i/planning/1.png" alt="">
+                <span class="planning-slider__room" style="top: 82px; left: 177px">
+                  <b>2</b>
+                  65,18
+                </span>
+                <span class="planning-slider__room" style="top: 82px; right: 177px">
+                  <b>3</b>
+                  89,17
+                </span>
+                <span class="planning-slider__room" style="bottom: 150px; left: 56px">
+                  <b>1</b>
+                  44,10
+                </span>
+                <span class="planning-slider__room" style="bottom: 95px; left: 254px">
+                  <b>2</b>
+                  56,59
+                </span>
+                <span class="planning-slider__room" style="bottom: 95px; right: 392px">
+                  <b>1</b>
+                  39,86
+                </span>
+                <span class="planning-slider__room" style="bottom: 120px; right: 178px">
+                  <b>2</b>
+                  74,79
+                </span>
+              </li>
+              <li>
+                <img src="f/i/planning/1.png" alt="">
+                <span class="planning-slider__room" style="top: 82px; left: 177px">
+                  <b>2</b>
+                  65,18
+                </span>
+                <span class="planning-slider__room" style="top: 82px; right: 177px">
+                  <b>3</b>
+                  89,17
+                </span>
+                <span class="planning-slider__room" style="bottom: 150px; left: 56px">
+                  <b>1</b>
+                  44,10
+                </span>
+                <span class="planning-slider__room" style="bottom: 95px; left: 254px">
+                  <b>2</b>
+                  56,59
+                </span>
+                <span class="planning-slider__room" style="bottom: 95px; right: 392px">
+                  <b>1</b>
+                  39,86
+                </span>
+                <span class="planning-slider__room" style="bottom: 120px; right: 178px">
+                  <b>2</b>
+                  74,79
+                </span>
+              </li>
+            </ul>
+            <div class="flexslider-navigation">
+              <a href="#" class="flex-prev">&nbsp;</a>
+              <a href="#" class="flex-next">&nbsp;</a>
+            </div>
+          </div>
+          <div class="planning__description">
+            <span>Свободна</span>
+            <span>Забронирована</span>
+            <span>Продана</span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section class="section decorating section_gray">
+      <div class="container holder">
+        <h2 class="lined">Отделка квартир</h2>
+        <p class="section__text">Квартиры сдаются с&nbsp;частичной отделкой. В&nbsp;них есть все, что нужно, чтобы начать новую жизнь без особых вложений в&nbsp;ремонт.</p>
+        <div class="decorating__btn">
+          <a href="#" class="btn"><i class="icon-photo"></i>Посмотреть фото</a>
+        </div>
+        <ul class="decorating__list">
+          <li>
+            <img src="f/i/decorating/1.png" alt="">
+            <p>Стены выровнены и&nbsp;оштукатурены</p>
+          </li><li>
+            <img src="f/i/decorating/2.png" alt="">
+            <p>Полы&nbsp;&mdash; стяжка, в&nbsp;ванной комнате&nbsp;&mdash; керамогранит</p>
+          </li><li>
+            <img src="f/i/decorating/3.png" alt="">
+            <p>Входные и&nbsp;межкомнатные двери из&nbsp;МДФ</p>
+          </li><li>
+            <img src="f/i/decorating/4.png" alt="">
+            <p>Натяжные одноуровневые потолки</p>
+          </li><li>
+            <img src="f/i/decorating/5.png" alt="">
+            <p>Установлена сантехника: унитаз, ванная и&nbsp;раковины</p>
+          </li><li>
+            <img src="f/i/decorating/6.png" alt="">
+            <p>Электрические 4-х конфорочные плиты</p>
+          </li><li>
+            <img src="f/i/decorating/7.png" alt="">
+            <p>Поквартирая электрика с&nbsp;разводкой, монтаж разеток</p>
+          </li><li>
+            <img src="f/i/decorating/8.png" alt="">
+            <p>Счетчики на&nbsp;газ и&nbsp;воду</p>
+          </li><li>
+            <img src="f/i/decorating/9.png" alt="">
+            <p>Радиаторы из&nbsp;металопластика с&nbsp;регулировкой</p>
+          </li><li>
+            <img src="f/i/decorating/10.png" alt="">
+            <p>2- х&nbsp;камерные стеклопакеты из&nbsp;ПВХ-профиля</p>
+          </li><li>
+            <img src="f/i/decorating/11.png" alt="">
+            <p>Застекленные лоджии</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="section construction container">
+      <div class="holder">
+        <h2 class="lined">Ход строительства</h2>
+        <p class="section__text">Следите за строительством вашего дома прямо на сайте в режиме онлайн</p>
+        <div class="construction__btn">
+          <a href="#" class="btn"><i class="icon-online"></i>Онлайн трансляция</a>
+        </div>
+        <div class="construction__dropdown">
+          <select id="month-select">
+            <option>Январь</option>
+            <option>Февраль</option>
+            <option>Март</option>
+            <option>Апрель</option>
+            <option>Май</option>
+            <option>Июнь</option>
+            <option>Июль</option>
+            <option>Август</option>
+            <option>Сентябрь</option>
+            <option>Октябрь</option>
+            <option>Наябрь</option>
+            <option>Декабрь</option>
+          </select>
+          <select id="year-select">
+            <option>2011</option>
+            <option>2012</option>
+            <option>2013</option>
+            <option>2014</option>
+            <option>2015</option>
+            <option>2016</option>
+          </select>
+        </div>
+        <div class="construction-slider slider" id="construction-slider">
+          <ul class="slides">
+            <li>
+              <div class="construction-slider__img">
+                <img src="f/i/construction/1.jpg" alt="">
+              </div>
+            </li>
+            <li>
+              <div class="construction-slider__img">
+                <img src="f/i/construction/1.jpg" alt="">
+              </div>
+            </li>
+          </ul>
+          <div class="flexslider-navigation">
+            <a href="#" class="flex-prev">&nbsp;</a>
+            <a href="#" class="flex-next">&nbsp;</a>
+          </div>
+        </div>
+        <div class="construction-slider-caption" id="construction-slider-caption">
+          <ul class="slides">
+            <li>
+              Заложен фундамент, строительство несущих колонн
+            </li>
+            <li>
+              Заложен фундамент, строительство несущих колонн2
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="section section_gray docs">
+      <div class="container holder">
+        <h2>Документация</h2>
+        <div class="docs__holder">
+          <div class="docs__item">
+            <a href="#" class="file file_pdf">
+              Разрешение на строительство
+              <span>.pdf, 500Кб</span>
+            </a>
+          </div><div class="docs__item">
+            <a href="#" class="file file_pdf">
+              Проектная декларация
+              <span>.pdf, 500Кб</span>
+            </a>
+          </div><div class="docs__item">
+            <a href="#" class="file file_pdf">
+              Акт ввода в эксплуатацию
+              <span>.pdf, 500Кб</span>
+            </a>
+          </div><div class="docs__item">
+            <a href="#" class="file file_pdf">
+              Договор долевого строительства
+              <span>.pdf, 500Кб</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+	</div>
+  <footer class="footer cleafix">
+  	<div class="container footer__holder">
+  		<div class="social">
+  			<a href="#" class="iconize-vk">&nbsp;</a><a href="#" class="iconize-fb">&nbsp;</a>
+  		</div>
+  		<p class="made-by">Создание сайта<a href="#"><i class="icon-inteo"></i></a></p>
+  		<div class="main-menu main-menu_white">
+  			<ul>
+					<li><a href="#">О компании</a></li>
+					<li><a href="#">Реализованные проекты</a></li>
+					<li><a href="#">Партнеры</a></li>
+					<li><a href="#">Документация</a></li>
+					<li><a href="#">Контакты</a></li>
+				</ul>
+  		</div>	
+  	</div>
+  </footer>
+  <div class="popups">
+  	
+  </div>
+</body>
+</html>
+
+
+
